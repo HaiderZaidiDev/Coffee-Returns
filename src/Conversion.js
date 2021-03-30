@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 function Compound_Interest(props) {
   // Calculates compound interest (8% S&P 500 Average) over 30 years given a principal.
-  var final_amount = (props.principal*(1+0.08)**30).toPrecision(5);
+  var final_amount = Math.round(props.principal*(1+0.08)**30);
   return (
     <p> ${props.principal} invested in an S&P 500 Index Fund would return ${final_amount} on average over 30-years.</p>
   );
@@ -35,7 +35,7 @@ class Conversion extends React.Component {
   handleChange(event) {
     // Target: For whatever triggered the event, get the attribute from that trigger.
     this.setState({coffee_consumed: event.target.value})
-    this.setState({principal: ((event.target.value)*this.props.price).toPrecision(4)})
+    this.setState({principal: Math.round((event.target.value)*this.props.price)})
   }
 
   handleSubmit(event) {
